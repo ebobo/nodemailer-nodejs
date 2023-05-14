@@ -22,7 +22,7 @@ async function sendmail() {
     to: process.env.TO_EMAIL, // list of receivers
     subject: 'Hello ✔', // Subject line
     text: 'Hello there, From nodemailer nodejs app', // plain text body
-    html: fs.readFileSync('attachment/page.html'),
+    html: readHtmlFile('attachment/page.html'),
     attachments: [
       {
         // file on disk as an attachment
@@ -36,4 +36,15 @@ async function sendmail() {
   console.log('Message sent: %s', info.messageId);
 }
 
-sendmail().then(console.log('clean file here')).catch(console.error);
+function readHtmlFile(filePath) {
+  try {
+    return fs.readFileSync(filePath, 'utf8');
+  } catch (err) {
+    console.error(`Failed to read file at ${filePath}: `, err);
+    return null;
+  }
+}
+
+sendmail()
+  .then(() => console.log('clean file here'))
+  .catch(console.error);
