@@ -16,8 +16,8 @@ async function sendmail() {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Qi Xu" <bobo_xu@hotmail.com>', // sender address
-    to: 'qi.xu@example.com', // list of receivers
+    from: '"Qi Xu" <qi.xu@example.com>', // sender address
+    to: 'qi.xu@email.com', // list of receivers
     subject: 'Hello ✔', // Subject line
     text: 'Hello Qi, From nodemailer nodejs app', // plain text body
     html: '<b>Hello Qi</b>', // html body
