@@ -49,6 +49,7 @@ app.post('/sendmail', upload.single('image'), (req, res) => {
     to: process.env.TO_EMAIL,
     subject: 'Hello Greeting from Xu',
     text: message,
+
     attachments: [
       {
         filename: req.file.originalname,
